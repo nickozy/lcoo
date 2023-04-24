@@ -16,16 +16,8 @@ export default class extends module {
 
         load.on('loaded', (transition, oldContainer, newContainer) => {
             this.call('destroy', oldContainer, 'app');
-            navCheck();
             this.call('update', newContainer, 'app');
         });
 
-        
-
-        function navCheck(){
-    const main = document.body
-            main.classList.remove('menu-open');
-            
-        }
     }
 }

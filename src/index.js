@@ -36,42 +36,4 @@ function init() {
   html.classList.add("is-loaded");
   html.classList.add("is-ready");
   html.classList.remove("is-loading");
-
-  /**
-   * Eagerly load the following fonts.
-   */
-  // if (isFontLoadingAPIAvailable) {
-  //   loadFonts(EAGER_FONTS, config.IS_DEV).then((eagerFonts) => {
-  //     html.classList.add("fonts-loaded");
-
-  //     if (config.IS_DEV) {
-  //       console.group(
-  //         "Eager fonts loaded!",
-  //         eagerFonts.length,
-  //         "/",
-  //         document.fonts.size
-  //       );
-  //       console.group("State of eager fonts:");
-  //       eagerFonts.forEach((font) =>
-  //         console.log(
-  //           font.family,
-  //           font.style,
-  //           font.weight,
-  //           font.status /*, font*/
-  //         )
-  //       );
-  //       console.groupEnd();
-  //       console.group("State of all fonts:");
-  //       document.fonts.forEach((font) =>
-  //         console.log(
-  //           font.family,
-  //           font.style,
-  //           font.weight,
-  //           font.status /*, font*/
-  //         )
-  //       );
-  //       console.groupEnd();
-  //     }
-  //   });
-  // }
 }

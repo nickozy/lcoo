@@ -8,6 +8,8 @@ export default class extends module {
     }
 
     init() {
+        console.log("hello")
+        console.log("world")
         this.scroll = new LocomotiveScroll({
             el: this.el,
             getDirection: true,

@@ -1,22 +1,26 @@
 import { module } from 'modujs';
 import { gsap } from 'gsap';
 
-
+let cmsPageContent = "[tr-ajaxmodal-element='cms-page-content']";
+let cmsLink = "[tr-ajaxmodal-element='cms-link']";
 export default class extends module {
     constructor(m) {
         super(m);
+        this.events = {
+            click: {
+                open: 'open'
+            }
+        }
     }
 
     init() {
-        // AJAX MODAL POWER-UP
-window.addEventListener("DOMContentLoaded", (event) => {
+console.log("modal")
     // ajaxmodal component
-    function adjaxModal() {
       let lightbox = $("[tr-ajaxmodal-element='lightbox']");
       let lightboxClose = $("[tr-ajaxmodal-element='lightbox-close']").attr("aria-label", "Close Modal");
       let lightboxModal = $("[tr-ajaxmodal-element='lightbox-modal']");
-      let cmsLink = "[tr-ajaxmodal-element='cms-link']";
-      let cmsPageContent = "[tr-ajaxmodal-element='cms-page-content']";
+      
+      
       let initialPageTitle = document.title;
       let initialPageUrl = window.location.href;
       let focusedLink;
@@ -57,8 +61,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
         // your code here
       }
   
-      $(document).on("click", cmsLink, function (e) {
-        focusedLink = $(this);
+    //   $(document).on("click", cmsLink, function (e) {
+        
+    //   });
+  
+      lightboxClose.on("click", function () {
+        tl.reverse();
+      });
+      $(document).on("keydown", function (e) {
+        if (e.key === "Escape") tl.reverse();
+      });
+      $(document).on("click", lightbox, function (e) {
+        if (!$(e.target).is(lightbox.find("*"))) tl.reverse();
+      });
+    }
+    open(){
+        focusedLink = this.el;
         initialPageUrl = window.location.href;
         e.preventDefault();
         let linkUrl = $(this).attr("href");
@@ -75,19 +93,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
             lightboxReady();
           }
         });
-      });
-  
-      lightboxClose.on("click", function () {
-        tl.reverse();
-      });
-      $(document).on("keydown", function (e) {
-        if (e.key === "Escape") tl.reverse();
-      });
-      $(document).on("click", lightbox, function (e) {
-        if (!$(e.target).is(lightbox.find("*"))) tl.reverse();
-      });
-    }
-    adjaxModal();
-  });
+
     }
 }
